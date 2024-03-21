@@ -1,0 +1,15 @@
+{
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./src"
+                ],
+                "alias": {
+                    "test1": "./src/test1"
+                }
+            }
+        ]
+    ]
+}
