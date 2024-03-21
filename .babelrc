@@ -7,7 +7,9 @@
                     "./src"
                 ],
                 "alias": {
-                    "test1": "./src/test1"
+                    "components": "./src/components",
+                    "screens": "./src/screens",
+                    "assets": "./src/assets"
                 }
             }
         ]
