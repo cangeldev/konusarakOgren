@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Button, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
+import style from './style'
 import axios from 'axios'
+import { PageButton } from 'components'
 
 export const HomeScreen = () => {
 
@@ -39,18 +41,18 @@ export const HomeScreen = () => {
                     <Text>{item.name}</Text>
                 )}
             />
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                <Button
-                    title="Önceki"
+            <View style={style.container}>
+                <PageButton
                     onPress={handlePrevPage}
                     disabled={page === 1}
                 />
                 <Text>
                     {page} Sayfadasınız
                 </Text>
-                <Button title="Sonraki"
+                <PageButton
                     onPress={handleNextPage}
                     disabled={page === totalPages}
+                    status='nextButton'
                 />
             </View>
         </View>
