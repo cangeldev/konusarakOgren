@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import axios from 'axios'
 import { Pagination } from 'components/pagination/Pagination'
+import { EpisodeCard } from 'components/cards'
+import style from './style'
 
 export const HomeScreen = () => {
 
-    const renderRow = ({ item }) => {
-        return <Text style={{ padding: 10 }}>{item.name}</Text>
+    const renderEpisodeCard = ({ item }) => {
+        return <EpisodeCard
+            title={item.name}
+            airDate={item.air_date}
+        />
     }
-    
+
     const [episodes, setEpisodes] = useState<any>([])
     const pageSize = 15
 
@@ -31,12 +36,14 @@ export const HomeScreen = () => {
     }, [])
 
     return (
-        <View>
-            <Pagination
-                data={episodes}
-                pageSize={pageSize}
-                renderItem={renderRow}
-            />
+        <View style={style.container}>
+            <ScrollView>
+                <Pagination
+                    data={episodes}
+                    pageSize={pageSize}
+                    renderItem={renderEpisodeCard}
+                />
+            </ScrollView>
         </View>
     )
 }
