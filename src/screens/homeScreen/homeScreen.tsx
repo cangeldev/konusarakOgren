@@ -1,87 +1,44 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { View, Text, FlatList } from 'react-native'
-import style from './style'
+import React, { useState, useEffect } from 'react'
+import { View, Text } from 'react-native'
 import axios from 'axios'
-import { CustomSearchInput, PageButton } from 'components'
+import { Pagination } from 'components/pagination/Pagination'
 
 export const HomeScreen = () => {
 
+    const renderRow = ({ item }) => {
+        return <Text style={{ padding: 10 }}>{item.name}</Text>
+    }
+    
     const [episodes, setEpisodes] = useState<any>([])
-    const [filteredEpisodes, setFilteredEpisodes] = useState([])
-    const [page, setPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(0)
-    const [inputValue, setInputValue] = useState('')
+    const pageSize = 15
 
-    useEffect(() => {
-        fetchData(page)
-    }, [page])
-
-    const fetchData = async (pageNumber: any) => {
+    const fetchEpisodes = async () => {
         try {
-            const response = await axios.get(`https://rickandmortyapi.com/api/episode?page=${pageNumber}`)
-            setEpisodes(response.data.results)
-            setTotalPages(response.data.info.pages)
+            const responses = await Promise.all([
+                axios.get('https://rickandmortyapi.com/api/episode'),
+                axios.get('https://rickandmortyapi.com/api/episode?page=2'),
+                axios.get('https://rickandmortyapi.com/api/episode?page=3'),
+            ])
+            const combinedEpisodes = responses.flatMap((response) => response.data.results)
+            setEpisodes(combinedEpisodes)
         } catch (error) {
             console.error('Bir hata oluştu:', error)
         }
     }
 
-    const filterEpisodes = useCallback(() => {
-        const filtered = episodes.filter((episode: any) =>
-            episode.name.toLowerCase().includes(inputValue.toLowerCase())
-        )
-        setFilteredEpisodes(filtered);
-    }, [episodes, inputValue])
-
-    const handleInputChange = (inputText: string) => {
-        setInputValue(inputText)
-    }
-
-    const handlePrevPage = () => {
-        setPage((prevPage) => Math.max(prevPage - 1, 1))
-    }
-
-    const handleNextPage = () => {
-        setPage((prevPage) => Math.min(prevPage + 1, totalPages))
-    }
-
     useEffect(() => {
-        filterEpisodes()
-    }, [inputValue, filterEpisodes])
+        fetchEpisodes()
+    }, [])
 
     return (
         <View>
-            <CustomSearchInput
-                onInputChange={handleInputChange}
-                placeHolder='İstediğiniz bölüm adını giriniz...'
+            <Pagination
+                data={episodes}
+                pageSize={pageSize}
+                renderItem={renderRow}
             />
-            {filteredEpisodes.length === 0 && inputValue.length > 0 ? (
-                <Text style={style.noResultText}>
-                    Aradığınız bölüm bulunamadı.
-                </Text>
-            ) : (
-                <FlatList
-                    data={filteredEpisodes.length > 0 ? filteredEpisodes : episodes}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <Text>{item.name}</Text>
-                    )}
-                />
-            )}
-            <View style={style.container}>
-                <PageButton
-                    onPress={handlePrevPage}
-                    disabled={page === 1}
-                />
-                <Text>
-                    {page} Sayfadasınız
-                </Text>
-                <PageButton
-                    onPress={handleNextPage}
-                    disabled={page === totalPages}
-                    status='nextButton'
-                />
-            </View>
         </View>
     )
 }
+
+
