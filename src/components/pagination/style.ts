@@ -6,10 +6,20 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center'
     },
+    innerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: "center",
+        marginTop: 15
+    },
     title: {
         fontSize: 25,
         color: colors.black,
         fontWeight: "bold",
         marginBottom: 10
+    },
+    pageText: {
+        color: colors.black,
+        fontSize: 16
     }
 })

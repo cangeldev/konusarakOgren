@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { View, ScrollView, Image, StatusBar } from 'react-native'
-import axios from 'axios'
-import { Pagination } from 'components/pagination/Pagination'
-import { EpisodeCard } from 'components/cards'
 import style from './style'
-import { rickAndMortyBG } from 'assets'
 import colors from 'assets/colors/colors'
+import { rickAndMortyBG } from 'assets'
+import axios from 'axios'
+import { EpisodeCard } from 'components/cards'
+import { Pagination } from 'components'
 
 export const HomeScreen = () => {
 
-    const renderEpisodeCard = ({ item }) => {
+    const renderEpisodeCard = ({ item }: any) => {
         return <EpisodeCard
             title={item.name}
             airDate={item.air_date}
@@ -44,18 +44,16 @@ export const HomeScreen = () => {
                 backgroundColor={colors.white}
                 barStyle={"dark-content"}
             />
-            <ScrollView>
-                <Image
-                    source={rickAndMortyBG}
-                    style={style.bgImage}
-                />
-                <Pagination
-                    title='Episodes'
-                    data={episodes}
-                    pageSize={pageSize}
-                    renderItem={renderEpisodeCard}
-                />
-            </ScrollView>
+            <Image
+                source={rickAndMortyBG}
+                style={style.bgImage}
+            />
+            <Pagination
+                title='Episodes'
+                data={episodes}
+                pageSize={pageSize}
+                renderItem={renderEpisodeCard}
+            />
         </View>
     )
 }

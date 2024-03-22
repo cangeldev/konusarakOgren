@@ -1,7 +1,7 @@
-import { TouchableOpacity, Image } from 'react-native'
 import React, { FC } from 'react'
-import { iconButtonEnabled, iconButtonDisabled } from 'assets'
+import { TouchableOpacity, Image } from 'react-native'
 import style from './style'
+import { iconButtonEnabled, iconButtonDisabled } from 'assets'
 
 interface IPageButton {
     onPress?: () => void

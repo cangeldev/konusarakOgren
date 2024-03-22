@@ -1,13 +1,13 @@
-import { View, Text, ActivityIndicator, Image, StatusBar } from 'react-native'
-import { useRoute } from '@react-navigation/native'
-import style from './style'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { View, Text, ActivityIndicator, Image, StatusBar } from 'react-native'
+import style from './style'
+import axios from 'axios'
+import { useRoute } from '@react-navigation/native'
 import { CharacterInfoCard } from 'components/cards'
 
 export const CharacterDetailScreen = () => {
-    const route = useRoute<any>()
 
+    const route = useRoute<any>()
     const { characterId } = route.params
     const [character, setCharacter] = useState<any>(null)
     const [loading, setLoading] = useState(true)
@@ -22,7 +22,7 @@ export const CharacterDetailScreen = () => {
                 console.log(err)
                 setLoading(false)
             }
-        };
+        }
 
         fetchCharacter()
     }, [characterId])
@@ -32,7 +32,7 @@ export const CharacterDetailScreen = () => {
             <View >
                 <ActivityIndicator size="large" color="#0000ff" />
             </View>
-        );
+        )
     }
     return (
         <View style={style.container}>

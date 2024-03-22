@@ -34,7 +34,7 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title 
     )
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <CustomSearchInput
                 onInputChange={handleInputChange}
                 placeHolder='İstediğiniz bölüm adını giriniz...'
@@ -51,20 +51,23 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title 
                     data={visibleData}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={renderItem}
+                    ListFooterComponent={() => (
+                        <View style={style.innerContainer}>
+                            <PageButton
+                                onPress={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            />
+                            <Text style={style.pageText}>Sayfa: {currentPage}</Text>
+                            <PageButton
+                                onPress={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage * pageSize >= data.length}
+                                status='nextButton'
+                            />
+                        </View>
+                    )}
                 />
             )}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <PageButton
-                    onPress={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                />
-                <Text>Sayfa: {currentPage}</Text>
-                <PageButton
-                    onPress={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage * pageSize >= data.length}
-                    status='nextButton'
-                />
-            </View>
+
         </View>
     )
 }

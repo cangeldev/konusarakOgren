@@ -12,7 +12,6 @@ export const EpisodeDetailScreen = () => {
     const [episode, setEpisode] = useState<any>(null)
     const [loading, setLoading] = useState(true)
 
-
     useEffect(() => {
         const fetchEpisode = async () => {
             try {
@@ -32,6 +31,9 @@ export const EpisodeDetailScreen = () => {
         fetchEpisode()
     }, [id])
 
+    const renderCharacter = () => {
+
+    }
     const renderItem = ({ item }: any) => (
 
         <View style={style.episodeContainer}>
@@ -47,7 +49,7 @@ export const EpisodeDetailScreen = () => {
                 ListEmptyComponent={() => <Text style={style.characterText}>No characters found.</Text>}
             />
         </View>
-    );
+    )
 
     if (loading) {
         return (
