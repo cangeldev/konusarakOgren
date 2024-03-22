@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, Image } from 'react-native'
+import { View, ScrollView, Image, StatusBar } from 'react-native'
 import axios from 'axios'
 import { Pagination } from 'components/pagination/Pagination'
 import { EpisodeCard } from 'components/cards'
 import style from './style'
 import { rickAndMortyBG } from 'assets'
+import colors from 'assets/colors/colors'
 
 export const HomeScreen = () => {
 
@@ -38,10 +39,14 @@ export const HomeScreen = () => {
 
     return (
         <View style={style.container}>
+            <StatusBar
+                backgroundColor={colors.white}
+                barStyle={"dark-content"}
+            />
             <ScrollView>
-                <Image 
-                source={rickAndMortyBG} 
-                style={style.bgImage} 
+                <Image
+                    source={rickAndMortyBG}
+                    style={style.bgImage}
                 />
                 <Pagination
                     data={episodes}
