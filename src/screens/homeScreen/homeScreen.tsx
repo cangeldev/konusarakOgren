@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, Image } from 'react-native'
 import axios from 'axios'
 import { Pagination } from 'components/pagination/Pagination'
 import { EpisodeCard } from 'components/cards'
 import style from './style'
+import { rickAndMortyBG } from 'assets'
 
 export const HomeScreen = () => {
 
@@ -38,6 +39,10 @@ export const HomeScreen = () => {
     return (
         <View style={style.container}>
             <ScrollView>
+                <Image 
+                source={rickAndMortyBG} 
+                style={style.bgImage} 
+                />
                 <Pagination
                     data={episodes}
                     pageSize={pageSize}
