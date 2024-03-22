@@ -6,10 +6,11 @@ import style from './style'
 interface IPagination {
     pageSize: number,
     renderItem: ({ item }: { item: any }) => JSX.Element,
-    data: any[]
+    data: any[],
+    title: string
 }
 
-export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data }) => {
+export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title }) => {
 
     const [inputValue, setInputValue] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
@@ -38,6 +39,9 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data }) => {
                 onInputChange={handleInputChange}
                 placeHolder='İstediğiniz bölüm adını giriniz...'
             />
+            <Text style={style.title}>
+                {title}
+            </Text>
             {visibleData.length === 0 && inputValue.length > 0 ? (
                 <Text style={style.noResultText}>
                     Aradığınız bölüm bulunamadı.

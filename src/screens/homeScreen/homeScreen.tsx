@@ -49,6 +49,7 @@ export const HomeScreen = () => {
                     style={style.bgImage}
                 />
                 <Pagination
+                    title='Episodes'
                     data={episodes}
                     pageSize={pageSize}
                     renderItem={renderEpisodeCard}

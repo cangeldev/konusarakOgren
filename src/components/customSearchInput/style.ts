@@ -8,6 +8,7 @@ export default StyleSheet.create({
         elevation: 3,
         paddingHorizontal: 10,
         paddingVertical: 8,
-        margin: 10
+        marginHorizontal:2,
+        marginVertical:10
     }
 })
