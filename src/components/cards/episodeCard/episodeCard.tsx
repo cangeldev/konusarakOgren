@@ -6,16 +6,19 @@ import { useNavigation } from '@react-navigation/native'
 
 interface IEpisodeCard {
     title: string,
-    airDate: string
+    airDate: string,
+    id: string
 }
 
-export const EpisodeCard: FC<IEpisodeCard> = ({ title, airDate }) => {
+export const EpisodeCard: FC<IEpisodeCard> = ({ title, airDate, id }) => {
 
     const navigation = useNavigation<any>()
     const year = airDate.substring(airDate.length - 4)
-
+    const handleButton = () => {
+        navigation.navigate("EpisodeDetailScreen", { id: id })
+    }
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("EpisodeDetailScreen")} style={style.container}>
+        <TouchableOpacity onPress={handleButton} style={style.container}>
             <Image
                 source={rickAndMorty}
                 style={style.image}

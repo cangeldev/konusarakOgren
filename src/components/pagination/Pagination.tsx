@@ -17,8 +17,8 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title 
 
     const handleInputChange = (inputText: string) => {
         setInputValue(inputText)
-        setCurrentPage(1) // Filtreleme yapıldığında sayfa numarasını sıfırla
-    };
+        setCurrentPage(1)
+    }
 
     const handlePageChange = (newPage: number) => {
         if (newPage >= 1 && newPage <= Math.ceil(data.length / pageSize)) {
@@ -43,7 +43,7 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title 
                 {title}
             </Text>
             {visibleData.length === 0 && inputValue.length > 0 ? (
-                <Text style={style.noResultText}>
+                <Text>
                     Aradığınız bölüm bulunamadı.
                 </Text>
             ) : (

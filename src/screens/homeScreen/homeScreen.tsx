@@ -13,6 +13,7 @@ export const HomeScreen = () => {
         return <EpisodeCard
             title={item.name}
             airDate={item.air_date}
+            id={item.id}
         />
     }
 
