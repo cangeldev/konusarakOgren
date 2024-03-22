@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
     container: {
-       
         paddingTop: 10,
-        flexDirection: "row", flexWrap: 'wrap'
+        flexDirection: "row",
+        flexWrap: 'wrap'
     },
     image: {
         width: 120,
