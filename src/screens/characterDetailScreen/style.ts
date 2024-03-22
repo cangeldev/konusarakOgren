@@ -24,7 +24,14 @@ export default StyleSheet.create({
     },
     infoView: {
         marginVertical: 10,
-        marginRight:50,
-        marginLeft:10
+        marginRight: 50,
+        marginLeft: 10
+    },
+    title: {
+        fontSize: 25,
+        color: colors.black,
+        fontWeight: "bold",
+        marginTop: 10,
+        marginLeft: 10
     }
 })

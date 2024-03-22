@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, Image, StatusBar } from 'react-native'
+import { View, Image, StatusBar, TouchableOpacity, Pressable } from 'react-native'
 import style from './style'
 import colors from 'assets/colors/colors'
-import { rickAndMortyBG } from 'assets'
+import { favoriesIcon, rickAndMortyBG } from 'assets'
 import axios from 'axios'
 import { EpisodeCard } from 'components/cards'
 import { Pagination } from 'components'
+import { useNavigation } from '@react-navigation/native'
 
 export const HomeScreen = () => {
 
+    const navigation = useNavigation<any>()
     const renderEpisodeCard = ({ item }: any) => {
         return <EpisodeCard
             title={item.name}
@@ -44,10 +46,17 @@ export const HomeScreen = () => {
                 backgroundColor={colors.white}
                 barStyle={"dark-content"}
             />
+
             <Image
                 source={rickAndMortyBG}
                 style={style.bgImage}
             />
+            <Pressable onPress={() => navigation.navigate("FavoriesScreen")} style={style.favoriIconContainer} >
+                <Image
+                    source={favoriesIcon}
+                    style={style.favoriIcon}
+                />
+            </Pressable>
             <Pagination
                 title='Episodes'
                 data={episodes}

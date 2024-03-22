@@ -11,5 +11,18 @@ export default StyleSheet.create({
         width: "100%",
         height: "10%",
         resizeMode: "center"
+    },
+    favoriIconContainer: {
+        width: 40,
+        height: 40,
+        position: "absolute",
+        top: 30,
+        right: 20
+    },
+    favoriIcon: {
+        width: "100%",
+        height: "100%",
+        tintColor:"#22a2bd"
     }
+
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { CharacterDetailScreen, EpisodeDetailScreen, HomeScreen } from 'screens'
+import { CharacterDetailScreen, EpisodeDetailScreen, FavoriesScreen, HomeScreen } from 'screens'
 
 export const Container = () => {
     const Stack = createStackNavigator()
@@ -19,6 +19,10 @@ export const Container = () => {
                 <Stack.Screen
                     name='CharacterDetailScreen'
                     component={CharacterDetailScreen}
+                />
+                <Stack.Screen
+                    name='FavoriesScreen'
+                    component={FavoriesScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>

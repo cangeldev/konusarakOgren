@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ActivityIndicator, Image, StatusBar, TouchableOpacity } from 'react-native'
+import { View, Text, ActivityIndicator, Image, StatusBar, TouchableOpacity, FlatList } from 'react-native'
 import style from './style'
 import axios from 'axios'
 import { useRoute } from '@react-navigation/native'
@@ -35,6 +35,13 @@ export const CharacterDetailScreen = () => {
             </View>
         )
     }
+
+    const renderItem = ({ item }: any) => (
+        <Text>
+            Episode - {item.split('/').pop()}
+        </Text>
+    )
+
     return (
         <View style={style.container}>
 
@@ -47,6 +54,9 @@ export const CharacterDetailScreen = () => {
                 source={{ uri: character.image }}
                 style={style.image}
             />
+            <Text style={style.title}>
+                Character Info :
+            </Text>
             <View style={style.infoView}>
                 <CharacterInfoCard
                     title="Name"
@@ -69,13 +79,15 @@ export const CharacterDetailScreen = () => {
                     info={character.location.name}
                 />
             </View>
-            <Text >Episodes:</Text>
+            <Text style={style.title}>
+                Episodes:
+            </Text>
             <View>
-                {character.episode.map((episode: string, index: number) => (
-                    <Text key={index} >
-                        Episode - {episode.split('/').pop()}
-                    </Text>
-                ))}
+                <FlatList
+                    data={character.episode}
+                    renderItem={renderItem}
+                    keyExtractor={(item, index) => index.toString()}
+                />
             </View>
             <TouchableOpacity style={style.favoriIconCotainer}>
                 <Image
