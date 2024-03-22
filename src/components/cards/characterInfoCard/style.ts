@@ -3,21 +3,21 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
     container: {
-        marginHorizontal: 15,
         flexDirection: "row",
         borderWidth: 1,
-        borderColor: "#FFDDFF",
+        borderColor: "#A9D3E9",
         borderRadius: 10,
         overflow: "hidden",
         marginVertical: 5
     },
     title: {
-        backgroundColor: "#FFDDFF",
-        padding: 10,
+        backgroundColor: "#A9D3E9",
+        paddingVertical: 10,
         paddingHorizontal: 20,
         fontSize: 16,
         fontWeight: '600',
-        minWidth: 100
+        minWidth: 105,
+        color: colors.white
     },
     infoText: {
         padding: 10,

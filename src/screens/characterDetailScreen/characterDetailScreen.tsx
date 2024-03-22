@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ActivityIndicator, Image, StatusBar } from 'react-native'
+import { View, Text, ActivityIndicator, Image, StatusBar, TouchableOpacity } from 'react-native'
 import style from './style'
 import axios from 'axios'
 import { useRoute } from '@react-navigation/native'
 import { CharacterInfoCard } from 'components/cards'
+import { favoriEnabled } from 'assets'
 
 export const CharacterDetailScreen = () => {
 
@@ -36,6 +37,7 @@ export const CharacterDetailScreen = () => {
     }
     return (
         <View style={style.container}>
+
             <StatusBar
                 translucent
                 backgroundColor="transparent"
@@ -45,26 +47,28 @@ export const CharacterDetailScreen = () => {
                 source={{ uri: character.image }}
                 style={style.image}
             />
-            <CharacterInfoCard
-                title="Name"
-                info={character.name}
-            />
-            <CharacterInfoCard
-                title="Status"
-                info={character.status}
-            />
-            <CharacterInfoCard
-                title="Species"
-                info={character.species}
-            />
-            <CharacterInfoCard
-                title="Gender"
-                info={character.gender}
-            />
-            <CharacterInfoCard
-                title="Location"
-                info={character.location.name}
-            />
+            <View style={style.infoView}>
+                <CharacterInfoCard
+                    title="Name"
+                    info={character.name}
+                />
+                <CharacterInfoCard
+                    title="Status"
+                    info={character.status}
+                />
+                <CharacterInfoCard
+                    title="Species"
+                    info={character.species}
+                />
+                <CharacterInfoCard
+                    title="Gender"
+                    info={character.gender}
+                />
+                <CharacterInfoCard
+                    title="Location"
+                    info={character.location.name}
+                />
+            </View>
             <Text >Episodes:</Text>
             <View>
                 {character.episode.map((episode: string, index: number) => (
@@ -73,6 +77,12 @@ export const CharacterDetailScreen = () => {
                     </Text>
                 ))}
             </View>
+            <TouchableOpacity style={style.favoriIconCotainer}>
+                <Image
+                    source={favoriEnabled}
+                    style={style.favoriIcon}
+                />
+            </TouchableOpacity>
         </View>
     )
 }

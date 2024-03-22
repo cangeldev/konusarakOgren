@@ -37,7 +37,7 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title 
         <View style={{ flex: 1 }}>
             <CustomSearchInput
                 onInputChange={handleInputChange}
-                placeHolder='İstediğiniz bölüm adını giriniz...'
+                placeHolder='Search a Episode ...'
             />
             <Text style={style.title}>
                 {title}
