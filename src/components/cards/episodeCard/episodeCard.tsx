@@ -14,9 +14,11 @@ export const EpisodeCard: FC<IEpisodeCard> = ({ title, airDate, id }) => {
 
     const navigation = useNavigation<any>()
     const year = airDate.substring(airDate.length - 4)
+
     const handleButton = () => {
         navigation.navigate("EpisodeDetailScreen", { id: id })
     }
+
     return (
         <TouchableOpacity onPress={handleButton} style={style.container}>
             <Image

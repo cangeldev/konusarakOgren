@@ -2,10 +2,6 @@ import colors from "assets/colors/colors"
 import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        justifyContent: 'center'
-    },
     innerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',

@@ -1,67 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, FlatList, ActivityIndicator } from 'react-native'
-import { useRoute } from '@react-navigation/native'
-import axios from 'axios'
-import style from './style'
-import { Pagination } from 'components'
-import { CharacterListItemCard, EpisodeDetailsCard } from 'components/cards'
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import style from './style';
+import { Pagination } from 'components';
+import { CharacterListItemCard, EpisodeDetailsCard } from 'components/cards';
+import { fetchCharacters, fetchEpisode } from 'utils/axios';
 
 export const EpisodeDetailScreen = () => {
 
-    const route = useRoute<any>()
-    const { id } = route.params
-    const [episode, setEpisode] = useState<any>(null)
-    const [characters, setCharacters] = useState<any[]>([])
-    const [loading, setLoading] = useState(true)
+    const route = useRoute<any>();
+    const { id } = route.params;
+    const [episode, setEpisode] = useState<any>(null);
+    const [characters, setCharacters] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchEpisode = async () => {
+        const fetchData = async () => {
             try {
-                const { data } = await axios.get(`https://rickandmortyapi.com/api/episode/${id}`)
-                const updatedEpisode = {
-                    ...data,
-                    characters: data.characters.map((charUrl: string) => charUrl.split('/').pop())
+                const updatedEpisode = await fetchEpisode(id);
+                setEpisode(updatedEpisode);
+                setLoading(false);
+            } catch (error) {
+                console.error('Bir hata oluştu:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        if (episode && episode.characters) {
+            const fetchCharactersData = async () => {
+                try {
+                    const formattedCharacters = await fetchCharacters(episode.characters);
+                    setCharacters(formattedCharacters);
+                } catch (error) {
+                    console.error('Bir hata oluştu:', error);
                 }
-                setEpisode(updatedEpisode)
-                setLoading(false)
-            } catch (err) {
-                console.log(err)
-                setLoading(false)
-            }
-        }
+            };
 
-        fetchEpisode()
-    }, [id])
-
-    useEffect(() => {
-        const fetchCharacters = async () => {
-            try {
-                const charactersData = await Promise.all(
-                    episode?.characters.map((charId: string) =>
-                        axios.get(`https://rickandmortyapi.com/api/character/${charId}`)
-                    ) || []
-                )
-                const formattedCharacters = charactersData.map((char: any) => ({
-                    id: char.data.id,
-                    name: char.data.name,
-                    image: char.data.image
-                }))
-                setCharacters(formattedCharacters)
-            } catch (err) {
-                console.log(err)
-            }
+            fetchCharactersData();
         }
-
-        if (episode) {
-            fetchCharacters()
-        }
-    }, [episode])
+    }, [episode]);
 
     const renderCharacter = () => {
         if (!characters || characters.length === 0) {
             return <Text style={style.characterText}>
                 No characters found.
-            </Text>
+            </Text>;
         }
 
         return (
@@ -78,8 +65,8 @@ export const EpisodeDetailScreen = () => {
                 data={characters}
                 title="Characters"
             />
-        )
-    }
+        );
+    };
 
     const renderItem = ({ item }: any) => (
         <View style={style.episodeContainer}>
@@ -100,25 +87,23 @@ export const EpisodeDetailScreen = () => {
             />
             {renderCharacter()}
         </View>
-    )
+    );
 
     if (loading) {
         return (
             <View style={style.loadingContainer}>
                 <ActivityIndicator size="large" color="#0000ff" />
             </View>
-        )
+        );
     }
 
     return (
         <View style={style.container}>
-            {/* <Text style={style.title}>Episode ID: {id}</Text> */}
             <FlatList
                 data={[episode]}
                 renderItem={renderItem}
                 keyExtractor={(item, index) => index.toString()}
             />
         </View>
-    )
-}
-
+    );
+};

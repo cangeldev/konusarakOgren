@@ -25,18 +25,27 @@ export const CharacterInfoCard: FC<ICharacterInfoCard> = ({ title, info }) => {
     return (
         <View style={style.container}>
             <View style={style.imageContainer}>
-                <Image source={imageMap[title]} style={style.image} />
+                <Image
+                    source={imageMap[title]}
+                    style={style.image}
+                />
             </View>
             <Text style={style.infoText}>
                 {info}
             </Text>
 
             {(info === 'Alive' || info === 'Dead') &&
-                <Image source={circle} style={statusImage} />
+                <Image
+                    source={circle}
+                    style={statusImage}
+                />
             }
 
             {(info === 'Female' || info === 'Male') &&
-                <Image source={genderImage} style={style.aliveStatusImage} />
+                <Image
+                    source={genderImage}
+                    style={style.aliveStatusImage}
+                />
             }
         </View>
     )

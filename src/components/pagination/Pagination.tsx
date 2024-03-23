@@ -30,7 +30,6 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title,
         (episode) => episode.name.toLowerCase().includes(inputValue.toLowerCase())
     )
 
-    const totalPages = Math.ceil(filteredData.length / pageSize)
     const startIndex = (currentPage - 1) * pageSize
     const endIndex = currentPage * pageSize
     const visibleData = filteredData.slice(startIndex, endIndex)
@@ -41,7 +40,9 @@ export const Pagination: FC<IPagination> = ({ pageSize, renderItem, data, title,
                 onPress={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
             />
-            <Text style={style.pageText}>Sayfa: {currentPage}</Text>
+            <Text style={style.pageText}>
+                Sayfa: {currentPage}
+            </Text>
             <PageButton
                 onPress={() => handlePageChange(currentPage + 1)}
                 disabled={endIndex >= filteredData.length}

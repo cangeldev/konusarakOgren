@@ -10,6 +10,7 @@ interface ICustomSearchInput {
 export const CustomSearchInput: FC<ICustomSearchInput> = ({ placeHolder, onInputChange }) => {
 
     const [inputText, setInputText] = useState('')
+
     const handleTextChange = (text: string) => {
         setInputText(text)
         onInputChange(text)

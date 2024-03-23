@@ -12,23 +12,23 @@ interface IFavoriesCard {
 }
 
 export const FavoriesCard: FC<IFavoriesCard> = ({ id, title, image, onRemove }) => {
-    
+
     const handleIcon = () => {
         Alert.alert(
-            'Dikkat', 
-            `${title} isimli karakteri favorilerden kaldırmak istediğinize emin misiniz?`, 
-            [       
+            'Dikkat',
+            `${title} isimli karakteri favorilerden kaldırmak istediğinize emin misiniz?`,
+            [
                 {
                     text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
+                    onPress: () => null,
                     style: 'cancel',
                 },
                 {
-                    text: 'OK', 
+                    text: 'OK',
                     onPress: () => removeFavorite(id),
                 },
             ]
-        );
+        )
     }
 
     const removeFavorite = async (characterId: number) => {
@@ -37,13 +37,12 @@ export const FavoriesCard: FC<IFavoriesCard> = ({ id, title, image, onRemove }) 
             if (existingFavorites) {
                 let favorites = JSON.parse(existingFavorites)
                 const updatedFavorites = favorites.filter((fav: any) => fav.id !== characterId)
-                
+
                 await AsyncStorage.setItem('favorites', JSON.stringify(updatedFavorites))
                 onRemove(characterId)
                 Alert.alert('Başarılı', `${title} favorilerden kaldırıldı!`)
             }
         } catch (error) {
-            console.log('Error removing favorite:', error)
             Alert.alert('Hata', 'Favori kaldırılırken bir hata oluştu!')
         }
     }

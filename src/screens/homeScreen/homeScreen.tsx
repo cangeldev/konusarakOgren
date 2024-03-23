@@ -3,10 +3,10 @@ import { View, Image, StatusBar, Pressable } from 'react-native'
 import style from './style'
 import colors from 'assets/colors/colors'
 import { favoriesIcon, rickAndMortyBG } from 'assets'
-import axios from 'axios'
 import { EpisodeCard } from 'components/cards'
 import { Pagination } from 'components'
 import { useNavigation } from '@react-navigation/native'
+import { fetchEpisodes } from 'utils/axios'
 
 export const HomeScreen = () => {
 
@@ -20,24 +20,18 @@ export const HomeScreen = () => {
     }
 
     const [episodes, setEpisodes] = useState<any>([])
-    const pageSize = 15
-
-    const fetchEpisodes = async () => {
-        try {
-            const responses = await Promise.all([
-                axios.get('https://rickandmortyapi.com/api/episode'),
-                axios.get('https://rickandmortyapi.com/api/episode?page=2'),
-                axios.get('https://rickandmortyapi.com/api/episode?page=3'),
-            ])
-            const combinedEpisodes = responses.flatMap((response) => response.data.results)
-            setEpisodes(combinedEpisodes)
-        } catch (error) {
-            console.error('Bir hata oluştu:', error)
-        }
-    }
 
     useEffect(() => {
-        fetchEpisodes()
+        const fetchData = async () => {
+            try {
+                const combinedEpisodes = await fetchEpisodes()
+                setEpisodes(combinedEpisodes)
+            } catch (error) {
+                console.error('Bir hata oluştu:', error)
+            }
+        }
+
+        fetchData()
     }, [])
 
     return (
@@ -59,12 +53,10 @@ export const HomeScreen = () => {
             <Pagination
                 title='Episodes'
                 data={episodes}
-                pageSize={pageSize}
+                pageSize={15}
                 renderItem={renderEpisodeCard}
                 placeHolder='Search an Episode ...'
             />
         </View>
     )
 }
-
-

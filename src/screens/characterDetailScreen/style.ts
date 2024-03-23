@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     image: {
         width: "100%",
-        height: "30%",
+        height: "25%",
         resizeMode: "stretch"
     },
     favoriIconCotainer: {
@@ -24,14 +24,19 @@ export default StyleSheet.create({
     },
     infoView: {
         marginVertical: 10,
-        marginRight: 50,
-        marginLeft: 10
+        marginRight: 50
     },
     title: {
         fontSize: 25,
         color: colors.black,
         fontWeight: "bold",
-        marginTop: 10,
-        marginLeft: 10
+        marginTop: 10
+    },
+    episodeText: {
+        color: colors.black
+    },
+    contentContainer: {
+        flex: 1,
+        paddingHorizontal: 10
     }
 })

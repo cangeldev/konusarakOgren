@@ -12,12 +12,12 @@ export default StyleSheet.create({
         fontSize: 22,
         color: colors.black,
         fontWeight: "700",
-        marginVertical:10
+        marginVertical: 10
     },
     separator: {
         height: 10
     },
     columnWrapper: {
         justifyContent: 'space-around'
-    },
+    }
 })

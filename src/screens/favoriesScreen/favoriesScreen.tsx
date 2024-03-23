@@ -21,7 +21,6 @@ export const FavoriesScreen = () => {
                 setLoading(false)
             }
         }
-
         fetchFavorites()
     }, [])
 
@@ -44,12 +43,18 @@ export const FavoriesScreen = () => {
         />
     )
 
-    const ItemSeparator = () => <View style={style.separator} />
+    const ItemSeparator = () =>
+        <View
+            style={style.separator}
+        />
 
     if (loading) {
         return (
             <View style={style.container}>
-                <ActivityIndicator size="large" color="#0000ff" />
+                <ActivityIndicator
+                    size="large"
+                    color="#0000ff"
+                />
             </View>
         )
     }

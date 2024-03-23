@@ -8,6 +8,6 @@ export default StyleSheet.create({
     },
     detailText: {
         fontSize: 16,
-        marginBottom: 10,
-    },
+        marginBottom: 10
+    }
 })

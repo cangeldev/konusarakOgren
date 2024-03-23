@@ -11,7 +11,6 @@ interface ICharacterListItemCard {
 export const CharacterListItemCard: FC<ICharacterListItemCard> = ({ name, id, image }) => {
 
     const navigation = useNavigation<any>()
-
     const handleButton = () => {
         navigation.navigate("CharacterDetailScreen", { characterId: id })
     }

@@ -6,6 +6,7 @@ interface IEpisodeDetailsCard {
     title: string
     info: string
 }
+
 export const EpisodeDetailsCard: FC<IEpisodeDetailsCard> = ({ title, info }) => {
     return (
         <Text style={style.detailText}>

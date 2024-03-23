@@ -10,7 +10,8 @@
                     "components": "./src/components",
                     "screens": "./src/screens",
                     "assets": "./src/assets",
-                    "container": "./src/container"
+                    "container": "./src/container",
+                    "utils": "./src/utils"
                 }
             }
         ]

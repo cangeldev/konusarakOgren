@@ -1,5 +1,5 @@
-import colors from "assets/colors/colors"
 import { StyleSheet } from "react-native"
+import colors from "assets/colors/colors"
 
 export default StyleSheet.create({
     txtInputContainer: {
@@ -8,7 +8,7 @@ export default StyleSheet.create({
         elevation: 3,
         paddingHorizontal: 10,
         paddingVertical: 8,
-        marginHorizontal:2,
-        marginVertical:10
+        marginHorizontal: 2,
+        marginVertical: 10
     }
 })
