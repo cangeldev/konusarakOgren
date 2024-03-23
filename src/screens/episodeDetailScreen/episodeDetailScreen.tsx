@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { View, Text, FlatList, ActivityIndicator } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 import axios from 'axios'
 import style from './style'
 import { Pagination } from 'components'
-import { EpisodeDetailsCard } from 'components/cards'
-
+import { CharacterListItemCard, EpisodeDetailsCard } from 'components/cards'
 
 export const EpisodeDetailScreen = () => {
 
-    const navigation = useNavigation<any>()
     const route = useRoute<any>()
     const { id } = route.params
     const [episode, setEpisode] = useState<any>(null)
@@ -71,15 +69,11 @@ export const EpisodeDetailScreen = () => {
                 placeHolder='Search for character ...'
                 pageSize={5}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", marginBottom: 15 }} onPress={() => navigation.navigate("CharacterDetailScreen", { characterId: item.id })} >
-                        <Image
-                            source={{ uri: item.image }}
-                            style={style.characterImage}
-                        />
-                        <Text numberOfLines={2} style={style.title}>
-                            {item.name}
-                        </Text>
-                    </TouchableOpacity>
+                    <CharacterListItemCard
+                        id={item.id}
+                        name={item.name}
+                        image={item.image}
+                    />
                 )}
                 data={characters}
                 title="Characters"

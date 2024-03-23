@@ -7,13 +7,6 @@ export default StyleSheet.create({
         padding: 15,
         backgroundColor: colors.white
     },
-    title: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginLeft: 10,
-        color: colors.black
-    },
     headerTitle: {
         fontSize: 25,
         fontWeight: 'bold',
@@ -31,12 +24,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#f5f5f5'
     },
-    characterImage: {
-        width: 90,
-        height: 90,
-        borderRadius: 50
-    },
     episodeContainer: {
-        marginBottom: 20,
+        marginBottom: 20
     }
 })
