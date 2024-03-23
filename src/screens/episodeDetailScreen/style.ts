@@ -13,14 +13,6 @@ export default StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center'
     },
-    episodeContainer: {
-        padding: 15,
-        marginBottom: 15,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        backgroundColor: colors.white
-    },
     detailText: {
         fontSize: 16,
         marginBottom: 10
@@ -37,5 +29,26 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f5f5f5'
+    },
+    characterItem: {
+        flex: 1,
+        alignItems: 'center',
+        margin: 10,
+        backgroundColor: '#f5f5f5',
+        padding: 10,
+        borderRadius: 10,
+        elevation: 3,
+    },
+    characterImage: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        marginBottom: 10
+    },
+    characterName: {
+        textAlign: 'center',
+        marginTop: 5,
+        fontWeight: 'bold',
+        color: colors.black
     }
 })

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Image, StatusBar, TouchableOpacity, Pressable } from 'react-native'
+import { View, Image, StatusBar, Pressable } from 'react-native'
 import style from './style'
 import colors from 'assets/colors/colors'
 import { favoriesIcon, rickAndMortyBG } from 'assets'
@@ -46,7 +46,6 @@ export const HomeScreen = () => {
                 backgroundColor={colors.white}
                 barStyle={"dark-content"}
             />
-
             <Image
                 source={rickAndMortyBG}
                 style={style.bgImage}
@@ -62,6 +61,7 @@ export const HomeScreen = () => {
                 data={episodes}
                 pageSize={pageSize}
                 renderItem={renderEpisodeCard}
+                placeHolder='Search an Episode ...'
             />
         </View>
     )
