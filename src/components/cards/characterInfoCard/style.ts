@@ -10,18 +10,33 @@ export default StyleSheet.create({
         overflow: "hidden",
         marginVertical: 5
     },
-    title: {
+    imageContainer: {
+        paddingVertical: 7,
+        paddingHorizontal: 15,
         backgroundColor: "#A9D3E9",
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        fontSize: 16,
-        fontWeight: '600',
-        minWidth: 105,
-        color: colors.white
+        justifyContent: "center"
+    },
+    image: {
+        width: 24,
+        height: 24,
+        tintColor: colors.white
     },
     infoText: {
         padding: 10,
         flex: 1,
         fontSize: 16
+    },
+    aliveStatusImage: {
+        width: 24,
+        height: 24,
+        alignSelf: "center",
+        marginRight: 10,
+        tintColor: "green"
+    },
+    deadStatusImage: {
+        width: 24,
+        height: 24,
+        alignSelf: "center",
+        marginRight: 10
     }
 })

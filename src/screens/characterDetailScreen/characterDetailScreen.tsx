@@ -99,7 +99,7 @@ export const CharacterDetailScreen = () => {
                 {['Name', 'Status', 'Species', 'Gender', 'Location'].map((title) => (
                     <CharacterInfoCard
                         key={title}
-                        title={title}
+                        title={title as any}
                         info={title === 'Location' ? character.location.name : character[title.toLowerCase()]}
                     />
                 ))}
