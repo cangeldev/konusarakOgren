@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import axios from 'axios'
 import style from './style'
 import { Pagination } from 'components'
+import { EpisodeDetailsCard } from 'components/cards'
 
 
 export const EpisodeDetailScreen = () => {
@@ -70,11 +71,14 @@ export const EpisodeDetailScreen = () => {
                 placeHolder='Search for character ...'
                 pageSize={5}
                 renderItem={({ item }) => (
-                    <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate("CharacterDetailScreen", { characterId: item.id })}>
-                        <View style={style.characterItem}>
-                            <Image source={{ uri: item.image }} style={style.characterImage} />
-                            <Text style={style.characterName}>{item.name}</Text>
-                        </View>
+                    <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", marginBottom: 15 }} onPress={() => navigation.navigate("CharacterDetailScreen", { characterId: item.id })} >
+                        <Image
+                            source={{ uri: item.image }}
+                            style={style.characterImage}
+                        />
+                        <Text numberOfLines={2} style={style.title}>
+                            {item.name}
+                        </Text>
                     </TouchableOpacity>
                 )}
                 data={characters}
@@ -84,10 +88,22 @@ export const EpisodeDetailScreen = () => {
     }
 
     const renderItem = ({ item }: any) => (
-        <View>
-            <Text style={style.detailText}><Text style={style.boldText}>Name:</Text> {item.name}</Text>
-            <Text style={style.detailText}><Text style={style.boldText}>Air Date:</Text> {item.air_date}</Text>
-            <Text style={style.detailText}><Text style={style.boldText}>Episode:</Text> {item.episode}</Text>
+        <View style={style.episodeContainer}>
+            <Text style={style.headerTitle}>
+                Episode Details
+            </Text>
+            <EpisodeDetailsCard
+                title='Name '
+                info={item.name}
+            />
+            <EpisodeDetailsCard
+                title='Air Date '
+                info={item.air_date}
+            />
+            <EpisodeDetailsCard
+                title='Episode '
+                info={item.episode}
+            />
             {renderCharacter()}
         </View>
     )

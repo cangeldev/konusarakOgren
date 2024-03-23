@@ -8,17 +8,18 @@ export default StyleSheet.create({
         backgroundColor: colors.white
     },
     title: {
-        fontSize: 20,
+        fontSize: 22,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginLeft: 10,
+        color: colors.black
+    },
+    headerTitle: {
+        fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 15,
-        textAlign: 'center'
-    },
-    detailText: {
-        fontSize: 16,
-        marginBottom: 10
-    },
-    boldText: {
-        fontWeight: 'bold'
+        color: "#22a2bd",
+        alignSelf: "center"
     },
     characterText: {
         fontSize: 14,
@@ -30,25 +31,12 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#f5f5f5'
     },
-    characterItem: {
-        flex: 1,
-        alignItems: 'center',
-        margin: 10,
-        backgroundColor: '#f5f5f5',
-        padding: 10,
-        borderRadius: 10,
-        elevation: 3,
-    },
     characterImage: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        marginBottom: 10
+        width: 90,
+        height: 90,
+        borderRadius: 50
     },
-    characterName: {
-        textAlign: 'center',
-        marginTop: 5,
-        fontWeight: 'bold',
-        color: colors.black
+    episodeContainer: {
+        marginBottom: 20,
     }
 })

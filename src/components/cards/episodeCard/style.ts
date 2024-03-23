@@ -19,7 +19,6 @@ export default StyleSheet.create({
     },
     innerContainer:
     {
-        flexDirection: 'column',
         flex: 1,
         marginLeft: 10
     }
