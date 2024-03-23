@@ -22,7 +22,7 @@ export default StyleSheet.create({
     favoriIcon: {
         width: "100%",
         height: "100%",
-        tintColor:"#22a2bd"
+        tintColor: colors.customBlue
     }
 
 })

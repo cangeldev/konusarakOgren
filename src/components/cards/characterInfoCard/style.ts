@@ -38,5 +38,11 @@ export default StyleSheet.create({
         height: 24,
         alignSelf: "center",
         marginRight: 10
+    },
+    genderImage: {
+        width: 24,
+        height: 24,
+        alignSelf: "center",
+        marginRight: 10
     }
 })

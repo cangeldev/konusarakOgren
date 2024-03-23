@@ -11,7 +11,7 @@ export default StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 15,
-        color: "#22a2bd",
+        color: colors.customBlue,
         alignSelf: "center"
     },
     characterText: {

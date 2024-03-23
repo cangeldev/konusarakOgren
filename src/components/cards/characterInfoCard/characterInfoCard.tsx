@@ -33,18 +33,16 @@ export const CharacterInfoCard: FC<ICharacterInfoCard> = ({ title, info }) => {
             <Text style={style.infoText}>
                 {info}
             </Text>
-
             {(info === 'Alive' || info === 'Dead') &&
                 <Image
                     source={circle}
                     style={statusImage}
                 />
             }
-
             {(info === 'Female' || info === 'Male') &&
                 <Image
                     source={genderImage}
-                    style={style.aliveStatusImage}
+                    style={style.genderImage}
                 />
             }
         </View>
